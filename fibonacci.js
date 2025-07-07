@@ -4,7 +4,7 @@ const memo = {
   0: 0,
   1: 1,
 }
-const fibonacci = (num, cache = new Map()) => {
+const fibonacci = (num, memo = new Map()) => {
   // //// Iterative way
   // let resultArr = [0, 1];
   // if(num <= 1) {
@@ -21,11 +21,11 @@ const fibonacci = (num, cache = new Map()) => {
 
   //// Memoizing way
   if(num <= 1) return num;
-  if(cache.has(num)) {
-    return cache.get(num);
+  if(memo.has(num)) {
+    return memo.get(num);
   }
-  const result = fibonacci(num - 2, cache) + fibonacci(num - 1, cache);
-  cache.set(num, result);
+  const result = fibonacci(num - 2, memo) + fibonacci(num - 1, memo);
+  memo.set(num, result);
   return result;
 }
 
